@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Navbar from './components/Navbar'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Movies from './pages/Movies'
 import MovieDetails from './pages/MovieDetails'
@@ -10,9 +10,12 @@ import MyBookihgs from './pages/MyBookihgs'
 import Favorite from './pages/Favorite'
 
 const App = () => {
+
+  const isAdminRute = useLocation().pathname.startsWith('/admin')
   return (
     <>
-      <Navbar />
+    {!isAdminRute &&  <Navbar />}
+      
        <Routes >
           <Route  path='/' element={<Home/>}/>
           <Route  path='/movies' element={<Movies/>}/>
