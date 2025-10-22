@@ -8,12 +8,15 @@ import MovieDetails from './pages/MovieDetails'
 import SearLayout from './pages/SearLayout'
 import MyBookihgs from './pages/MyBookihgs'
 import Favorite from './pages/Favorite'
+import { Toaster } from 'react-hot-toast'
+import Footer from './components/Footer'
 
 const App = () => {
 
   const isAdminRute = useLocation().pathname.startsWith('/admin')
   return (
     <>
+    <Toaster / >
     {!isAdminRute &&  <Navbar />}
       
        <Routes >
@@ -24,6 +27,7 @@ const App = () => {
           <Route  path='/my-bookings' element={<MyBookihgs/>}/>
           <Route  path='favorite' element={<Favorite/>}/>
        </Routes>
+       {!isAdminRute &&  <Footer />}
     </>
   )
 }
